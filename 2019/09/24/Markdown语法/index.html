@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="description" content="1.特殊字符Markdown对特殊字符处理不是很友好,很容易出现很奇怪的异常,其实就是因为文章中包含了特殊字符无法编译通过导致Hexo无法渲染  2.标题 3.粗体斜体 4.链接 5.列表 6.引用 7.图片 8.换行如果另起一行，只需在当前行结尾加 2 个空格 9.分隔符如果你有写分割线的习惯，可以新起一行输入三个减号-。当前后都有段落时，请空出一行 10.小型文本 11.注释 12.表格">
-<meta name="keywords" content="�������">
+<meta name="keywords" content="Markdown">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Markdown基本语法">
 <meta property="og:url" content="https://Lionel-King.github.io/2019/09/24/Markdown语法/index.html">
@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://lionel-king.github.io/2019/09/24/Markdown语法/8.jpg">
 <meta property="og:image" content="https://lionel-king.github.io/2019/09/24/Markdown语法/9.jpg">
 <meta property="og:image" content="https://lionel-king.github.io/2019/09/24/Markdown语法/10.jpg">
-<meta property="og:updated_time" content="2019-09-24T05:18:30.795Z">
+<meta property="og:updated_time" content="2019-09-24T08:15:19.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markdown基本语法">
 <meta name="twitter:description" content="1.特殊字符Markdown对特殊字符处理不是很友好,很容易出现很奇怪的异常,其实就是因为文章中包含了特殊字符无法编译通过导致Hexo无法渲染  2.标题 3.粗体斜体 4.链接 5.列表 6.引用 7.图片 8.换行如果另起一行，只需在当前行结尾加 2 个空格 9.分隔符如果你有写分割线的习惯，可以新起一行输入三个减号-。当前后都有段落时，请空出一行 10.小型文本 11.注释 12.表格">
@@ -366,7 +366,29 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdown</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Markdown//" class="article-tag-list-link color4">Markdown</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
     
 
@@ -593,6 +615,18 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">分布式数据库</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -774,6 +808,56 @@
   
   <!-- <script async type="text/javascript" size="90" alpha="0.2" zIndex="0" src="/plugins/ribbon.js/ribbon.min.js"></script> -->
   
+  
+    <script type="text/javascript" src="/plugins/live2d-widget.js/L2Dwidget.min.js"></script>
+<script type="text/javascript">
+  /**
+   * 完整配置请参考：https://l2dwidget.js.org/docs/class/src/index.js~L2Dwidget.html#instance-method-init
+   */
+  var pluginModelPath = "assets/", // 模型的文件路径，无需更改
+    pluginRootPath = "/live2d_models/"; // 插件的路径，无需更改
+  //特定的模型json文件名称
+  var modelPathJson = {
+    "epsilon2_1": "Epsilon2.1",
+    "gf": "Gantzert_Felixander",
+    "haru/01": "haru01",
+    "haru/02": "haru02",
+    "nietzsche": "nietzche"
+  }
+
+  
+    var modelName = "hibiki";
+  
+
+  var modelJsonPath = "";
+  if (modelPathJson[modelName]) {
+    modelJsonPath = pluginRootPath + modelName + "/" + pluginModelPath + modelPathJson[modelName] +
+      ".model.json";
+  } else {
+    modelJsonPath = pluginRootPath + modelName + "/" + pluginModelPath + modelName + ".model.json";
+  }
+  L2Dwidget.init({
+    model: {
+      jsonPath: modelJsonPath
+    },
+    display: {
+       position: "right", 
+       width: 145, 
+       height: 315, 
+       hOffset: 50, 
+      
+    },
+    mobile: {
+       show: false, 
+       scale: 0.6 
+    },
+    react: {
+       opacity: 0.8 
+    }
+  })
+
+</script>
+
   
   
   <script type="text/javascript" src="/lib/snow.js"></script>
