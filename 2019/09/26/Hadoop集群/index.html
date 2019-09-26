@@ -6,18 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://Lionel-King.github.io">
-  <title>Category: hexo教程 | MFENG</title>
+  <title>Hadoop伪分布式集群搭建 | MFENG</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="�������">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MFENG">
-<meta property="og:url" content="https://Lionel-King.github.io/categories/hexo教程/index.html">
+  <meta name="description" content="概述伪分布式是指单机条件下，模拟分布式集群运行环境，包括：各种Java守护进程对不同Hadoop节点任务的模拟，和HDFS的交互。守护进程：NameNode, DataNode, JobTracker, TaskTracker。本地开发使用，用来开发测试hadoop程序的执行。需要部署hadoop集群，如果想要在本地简单使用hadoop，当没有那么多服务器使用，那么伪分布式hadoop环境是最好的">
+<meta name="keywords" content="Hadoop,更新中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop伪分布式集群搭建">
+<meta property="og:url" content="https://Lionel-King.github.io/2019/09/26/Hadoop集群/index.html">
 <meta property="og:site_name" content="MFENG">
+<meta property="og:description" content="概述伪分布式是指单机条件下，模拟分布式集群运行环境，包括：各种Java守护进程对不同Hadoop节点任务的模拟，和HDFS的交互。守护进程：NameNode, DataNode, JobTracker, TaskTracker。本地开发使用，用来开发测试hadoop程序的执行。需要部署hadoop集群，如果想要在本地简单使用hadoop，当没有那么多服务器使用，那么伪分布式hadoop环境是最好的">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://lionel-king.github.io/2019/09/26/Hadoop集群/1.jpg">
+<meta property="og:image" content="https://lionel-king.github.io/2019/09/26/Hadoop集群/2.jpg">
+<meta property="og:image" content="https://lionel-king.github.io/2019/09/26/Hadoop集群/3.jpg">
+<meta property="og:image" content="https://lionel-king.github.io/2019/09/26/Hadoop集群/4.jpg">
+<meta property="og:image" content="https://lionel-king.github.io/2019/09/26/Hadoop集群/5.jpg">
+<meta property="og:image" content="https://lionel-king.github.io/2019/09/26/Hadoop集群/6.jpg">
+<meta property="og:image" content="https://lionel-king.github.io/2019/09/26/Hadoop集群/7.jpg">
+<meta property="og:updated_time" content="2019-09-26T03:50:46.347Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MFENG">
+<meta name="twitter:title" content="Hadoop伪分布式集群搭建">
+<meta name="twitter:description" content="概述伪分布式是指单机条件下，模拟分布式集群运行环境，包括：各种Java守护进程对不同Hadoop节点任务的模拟，和HDFS的交互。守护进程：NameNode, DataNode, JobTracker, TaskTracker。本地开发使用，用来开发测试hadoop程序的执行。需要部署hadoop集群，如果想要在本地简单使用hadoop，当没有那么多服务器使用，那么伪分布式hadoop环境是最好的">
+<meta name="twitter:image" content="https://lionel-king.github.io/2019/09/26/Hadoop集群/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="MFENG" type="application/atom+xml">
   
@@ -219,76 +231,250 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Hadoop集群" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/09/09/hello-hexo/" class="archive-article-date">
-        <time datetime="2019-09-09T11:48:08.977Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/09/09/hello-hexo/" target="_blank">Hello hexo</a>
   
+    <h1 class="article-title" itemprop="name">
+      Hadoop伪分布式集群搭建
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2019/09/26/Hadoop集群/" class="archive-article-date">
+        <time datetime="2019-09-26T03:50:45.895Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">751字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">3分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>伪分布式是指单机条件下，模拟分布式集群运行环境，包括：各种Java守护进程对不同Hadoop节点任务的模拟，和HDFS的交互。<br>守护进程：NameNode, DataNode, JobTracker, TaskTracker。<br>本地开发使用，用来开发测试hadoop程序的执行。需要部署hadoop集群，如果想要在本地简单使用hadoop，当没有那么多服务器使用，那么伪分布式hadoop环境是最好的选择。  </p>
+<h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><p>1.修改/etc/hosts<br>2.配置JDK 安装<br>解压：tar -zxvf jdk-8u172-ea-BIN-B03-linux-x64-18_jan_2018.tar.gz<br>cd  /opt/     进入opt<br>Vi  /etc/profile      配置etc/profile，修改JAVA_HOME<br>echo $JAVA_HOME   查看配置JAVA_HOME，为空，修改无效<br>source /etc/profile  echo $JAVA_HOME 重新查看，/usr/java/jdk1.8.0_161，修改生效<br>检查jdk安装好，java -version<br>3.配置SSH（免密码登录）<br>ssh-Keygen -t rsa    ll .ssh/    私钥和公钥 移动公钥 赋予权限<br>tar zxf hadoop-2.7.4.tar.gz 解压hadoop压缩包  查看ll<br>cd hadoop-2.7.4  ll<br>pwd  //查看路径/home/hadoop/opt/hadoop-2.7.4<br>vi /etc/profil  配置$HADOOP_HOME=/home/hadoop/opt/hadoop-2.7.4<br>source /etc/profile<br>echo $HADOOP_HOME<br>cd /home/hadoop/opt/hadoop-2.7.4/etc/hadoop/<br>配置环境变量：<br>Vi core-site.xml<br>Vi hdfs-site.xml<br>Vi yarn-site.xml<br>Vi mapred-site.xml<br>（具体代码不放了，可以百度）<br>4.格式化hdfs<br>hdfs namenode -format<br>注：hdfs namenode格式化时出现错误/home/hadoop/opt/hadoop-2.7.4/bin/hdfs:行304: /usr/bin/java/bin/java: 不是目录 /home/hadoop/opt/hadoop-2.7.4/bin/hdfs: 第 304 行:exec: /usr/bin/java/bin/java: 无法执行: 不是目录<br>Jdk安装路径出现问题，which java的路径并不能配置到/etc/profile中去，一下才是实际路径<br>6.验证Hadoop集群<br>（1）Jps<br>（2）关闭防火墙或者在防火墙规则中开放这些端口<br>hdfs   <a href="http://bigdata:50070/" target="_blank" rel="noopener">http://bigdata:50070/</a><br>yarn   <a href="http://bigdata:18088/" target="_blank" rel="noopener">http://bigdata:18088/</a><br>7.启动hadoop集群<br>/home/hadoop/opt/hadoop-2.7.4/sbin/start-all.sh<br><img src="/2019/09/26/Hadoop集群/1.jpg" alt="启动进程"><br>再启动YARN，执行命令：sbin/start-yarn.sh，启动成功后的两个进程：<br><img src="/2019/09/26/Hadoop集群/2.jpg" alt="启动进程"><br>查看启动状态：jps，启动成功会看到五个进程：<br><img src="/2019/09/26/Hadoop集群/3.jpg" alt="启动进程"><br>8.在window访问集群的web服务<br>HDFS和YARN集群都有相对应的WEB监控页面。<br>HDFS：<a href="http://ip:50070" target="_blank" rel="noopener">http://ip:50070</a><br>YARN：<a href="http://ip:8088" target="_blank" rel="noopener">http://ip:8088</a><br>ip：换成自己虚拟机的ip<br>9.DHFSWEB监控页面<br>在浏览器输入<a href="http://ip（自己虚拟机IP）:50070，正常会显示如下图：" target="_blank" rel="noopener">http://ip（自己虚拟机IP）:50070，正常会显示如下图：</a><br><img src="/2019/09/26/Hadoop集群/4.jpg" alt="启动进程"><br>10.YARN WEB监控页面<br>浏览器输入：<a href="http://ip:8088，正常会显示如下图：" target="_blank" rel="noopener">http://ip:8088，正常会显示如下图：</a><br><img src="/2019/09/26/Hadoop集群/5.jpg" alt="启动进程"><br>图中会显示Cluster Nodes Metrics，即所有节点情况，这里显示有一个活动节点。</p>
+<h3 id="YARN集群的操作—-提交任务-作业"><a href="#YARN集群的操作—-提交任务-作业" class="headerlink" title="YARN集群的操作—-提交任务/作业"></a>YARN集群的操作—-提交任务/作业</h3><h2 id="计算圆周率"><a href="#计算圆周率" class="headerlink" title="计算圆周率"></a>计算圆周率</h2><p>/usr/soft/hadoop-3.0.3$ yarn jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.0.3.jar pi 4 100<br>命令参数说明:<br>后面2个数字参数的含义:第1个4指的是要运行4次map任务，第2个数字100指的是每个map任务，要投掷100次，2个参数的乘积就是总的投掷次数。  投掷次数越多，结果越准确。</p>
+<h2 id="使用hadoop自带的mapreduce程序来测试mapreduce的效果"><a href="#使用hadoop自带的mapreduce程序来测试mapreduce的效果" class="headerlink" title="使用hadoop自带的mapreduce程序来测试mapreduce的效果"></a>使用hadoop自带的mapreduce程序来测试mapreduce的效果</h2><p>hadoop jar hadoop-mapreduce-examples-3.0.3.jar pi 5 100<br><img src="/2019/09/26/Hadoop集群/6.jpg" alt="启动进程"><br><img src="/2019/09/26/Hadoop集群/7.jpg" alt="启动进程">  </p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝奶茶<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/pay.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          ALL_IS_WELL
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://Lionel-King.github.io/2019/09/26/Hadoop集群/" title="Hadoop伪分布式集群搭建" target="_blank">https://Lionel-King.github.io/2019/09/26/Hadoop集群/</a>
+        </li>
+        <li>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+        </li>
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Hadoop</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">更新中</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/hexo教程//" class="article-tag-list-link color2">hexo教程</a>
+        			<a href="/categories/集群//" class="article-tag-list-link color3">集群</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    
 
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://Lionel-King.github.io/2019/09/26/Hadoop集群/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/24/My Blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Welcome To My Blog</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -329,10 +515,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
