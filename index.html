@@ -340,38 +340,20 @@
 
 
   
-    <article id="post-hdfs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-hdfs两大核心功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/09/28/hdfs/" target="_blank">hdfs两大核心功能</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/09/28/hdfs/" class="archive-article-date">
-        <time datetime="2019-09-28T14:01:55.740Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-28</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
   <div class="article-entry" itemprop="articleBody">
     
-    <p>###hdfs的两大核心功能：<br>   所有的文件系统： 上传 下载<br>   hdfs的文件上传：<br>   hadoop fs -put 本地文件 hdfs路径</p>
-<p>##上传究竟是在做什么？</p>
-<p>1、客户端发送文件上传请求，namenode会首先查找自己的目录树<br>  a.该文件是否已经在上传的目录中，如果存在抛异常<br>  b.检查上传路径的目录是否存在，如果不存在抛异常，不会<br>  自动建父目录<br>2、namenode如果检查通过，响应客户端请求，允许上传<br>3、客户端开始准备上传工作<br>4、客户端提交真正的文件上传请求<code>包含了文件长度</code><br>5、namenode根据文件长度返回可以上传的DataNode节点&#40;blk—1：hadoop01 hadoop02 hadoop03&#41;给客户端&#40;返回的节点是有规律的：距离跟空间进行计算<br>第一个返回的是同节点<br>第二个节点是同一个机架其他节点<br>第三个为其他机架上的&#41;<br>6、构建上传pipline&#40; 管道&#41;<br>文件切块：<br>  1&#41; .逻辑切块：并不是真正的进行切分，划分每个块的<br>   偏移量<br>   blk1:0-127<br>   blk2:128-189<br>  2&#41; 物理切块<br>  构建pipline：按照数据块id逐个进行构建<br>    客户端—&gt;hadoop01—&gt;hadoop02—&gt;hadoop03<br>  同时客户端会开启一个服务：<br>  监控数据是否上传成功<br>7、客户端在构建pipline的同时会开启一个服务，这个服务的作<br>用就是等待datanode的响应结果，保证数据的正常上传<br>8、开始进行真正的文件上传&#40; 以package为单位上传的，一个<br>package的大小为64k&#41; ，向上传到内存缓冲区，会产生两个线程，<br>一个线程往datanode里面写，一个线程往本地磁盘里面传输，每一个<br>节点会继续向通道的下一个节点进行传送，直到数据传输完成<br>9、第一块上传完成后，重新构建通道6，7，8步重复，所有的块上传<br>成功之后客户端向namenode发送传输完成的报告。</p>
+    <hr>
+<p>title: hdfs两大核心功能<br>tag:</p>
+<ul>
+<li>hdfs</li>
+<li>更新中</li>
+</ul>
+<hr>
+<h3 id="hdfs的两大核心功能："><a href="#hdfs的两大核心功能：" class="headerlink" title="hdfs的两大核心功能："></a>hdfs的两大核心功能：</h3><p>   所有的文件系统： 上传 下载<br>   hdfs的文件上传：<br>   hadoop fs -put 本地文件 hdfs路径  </p>
+<h2 id="上传究竟是在做什么？"><a href="#上传究竟是在做什么？" class="headerlink" title="上传究竟是在做什么？"></a>上传究竟是在做什么？</h2><p>1、客户端发送文件上传请求，namenode会首先查找自己的目录树<br>  a.该文件是否已经在上传的目录中，如果存在抛异常<br>  b.检查上传路径的目录是否存在，如果不存在抛异常，不会<br>  自动建父目录<br>2、namenode如果检查通过，响应客户端请求，允许上传<br>3、客户端开始准备上传工作<br>4、客户端提交真正的文件上传请求<code>包含了文件长度</code><br>5、namenode根据文件长度返回可以上传的DataNode节点&#40;blk—1：hadoop01 hadoop02 hadoop03&#41;给客户端&#40;返回的节点是有规律的：距离跟空间进行计算<br>第一个返回的是同节点<br>第二个节点是同一个机架其他节点<br>第三个为其他机架上的&#41;<br>6、构建上传pipline&#40; 管道&#41;<br>文件切块：<br>  1&#41; .逻辑切块：并不是真正的进行切分，划分每个块的<br>   偏移量<br>   blk1:0-127<br>   blk2:128-189<br>  2&#41; 物理切块<br>  构建pipline：按照数据块id逐个进行构建<br>    客户端—&gt;hadoop01—&gt;hadoop02—&gt;hadoop03<br>  同时客户端会开启一个服务：<br>  监控数据是否上传成功<br>7、客户端在构建pipline的同时会开启一个服务，这个服务的作<br>用就是等待datanode的响应结果，保证数据的正常上传<br>8、开始进行真正的文件上传&#40; 以package为单位上传的，一个<br>package的大小为64k&#41; ，向上传到内存缓冲区，会产生两个线程，<br>一个线程往datanode里面写，一个线程往本地磁盘里面传输，每一个<br>节点会继续向通道的下一个节点进行传送，直到数据传输完成<br>9、第一块上传完成后，重新构建通道6，7，8步重复，所有的块上传<br>成功之后客户端向namenode发送传输完成的报告。</p>
 
     
 
@@ -383,26 +365,11 @@
   <div class="article-info article-info-index">
     
     
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hdfs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">更新中</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
     
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2019/09/28/hdfs/">展开全文 >></a>
+      <a class="article-more-a" href="/2019/09/28/hdfs两大核心功能/">展开全文 >></a>
     </p>
     
 
@@ -481,11 +448,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">更新中</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Hadoop</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Hadoop</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">更新中</a>
         		</li>
       		
 		</ul>
@@ -979,7 +946,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hdfs</a>
+                <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -987,7 +954,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">分布式数据库</a>
+                <a href="javascript:void(0)" class="js-tag color2">ALL IS WELL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -995,11 +962,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ALL IS WELL</a>
+                <a href="javascript:void(0)" class="js-tag color2">分布式数据库</a>
               </li>
             
             <div class="clearfix"></div>
