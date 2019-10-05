@@ -10,20 +10,20 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;为什么优化？hexo+github访问速度超慢！龟速暴击。。。原因是托管网站的github是外网，访问外网慢是必然的。有很多人博客采用hexo+github+coding方式，至于coding是什么？大家可以理解为中国版的github，如果把代码既托管到coding上，又托管到github上，让大陆的用户访问的是由coding托管的网站，歪果仁访问的">
+  <meta name="description" content="为什么优化？&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;hexo+github访问速度超慢！龟速暴击。。。原因是托管网站的github是外网，访问外网慢是必然的。有很多人博客采用hexo+github+coding方式，至于coding是什么？大家可以理解为中国版的github，如果把代码既托管到coding上，又托管到github上，让大陆的用户访问的是由coding托管的网站，歪果仁访问的">
 <meta name="keywords" content="hexo,博客优化,coding">
 <meta property="og:type" content="article">
 <meta property="og:title" content="访问速度优化">
 <meta property="og:url" content="https://www.jshlionel.com/2019/10/03/hexo搭建博客优化-coding/index.html">
 <meta property="og:site_name" content="MFENG">
-<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;为什么优化？hexo+github访问速度超慢！龟速暴击。。。原因是托管网站的github是外网，访问外网慢是必然的。有很多人博客采用hexo+github+coding方式，至于coding是什么？大家可以理解为中国版的github，如果把代码既托管到coding上，又托管到github上，让大陆的用户访问的是由coding托管的网站，歪果仁访问的">
+<meta property="og:description" content="为什么优化？&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;hexo+github访问速度超慢！龟速暴击。。。原因是托管网站的github是外网，访问外网慢是必然的。有很多人博客采用hexo+github+coding方式，至于coding是什么？大家可以理解为中国版的github，如果把代码既托管到coding上，又托管到github上，让大陆的用户访问的是由coding托管的网站，歪果仁访问的">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.jshlionel.com/2019/10/03/hexo搭建博客优化-coding/1.jpg">
 <meta property="og:image" content="https://www.jshlionel.com/2019/10/03/hexo搭建博客优化-coding/2.jpg">
-<meta property="og:updated_time" content="2019-10-05T06:13:34.932Z">
+<meta property="og:updated_time" content="2019-10-05T06:45:27.584Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="访问速度优化">
-<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;为什么优化？hexo+github访问速度超慢！龟速暴击。。。原因是托管网站的github是外网，访问外网慢是必然的。有很多人博客采用hexo+github+coding方式，至于coding是什么？大家可以理解为中国版的github，如果把代码既托管到coding上，又托管到github上，让大陆的用户访问的是由coding托管的网站，歪果仁访问的">
+<meta name="twitter:description" content="为什么优化？&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;hexo+github访问速度超慢！龟速暴击。。。原因是托管网站的github是外网，访问外网慢是必然的。有很多人博客采用hexo+github+coding方式，至于coding是什么？大家可以理解为中国版的github，如果把代码既托管到coding上，又托管到github上，让大陆的用户访问的是由coding托管的网站，歪果仁访问的">
 <meta name="twitter:image" content="https://www.jshlionel.com/2019/10/03/hexo搭建博客优化-coding/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="MFENG" type="application/atom+xml">
@@ -261,7 +261,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;为什么优化？hexo+github访问速度超慢！龟速暴击。。。原因是托管网站的github是外网，访问外网慢是必然的。有很多人博客采用hexo+github+coding方式，至于coding是什么？大家可以理解为中国版的github，如果把代码既托管到coding上，又托管到github上，让大陆的用户访问的是由coding托管的网站，歪果仁访问的是由github托管的网站，这样访问速度就能上去了。<br>搭建完成后（在上一篇）<br>1.需要创建一个coding账号，然后添加一个项目，项目名为你的coding账号名，例如我的账号名是ivan-zcy，所以我新建的项目为ivan-zcy，注意要在初始化项目那一项打勾<br><img src="/2019/10/03/hexo搭建博客优化-coding/1.jpg" alt="1"><br>2.进入项目 -&gt; 设置 -&gt; 部署公匙 -&gt;新建部署公匙，给项目添加公匙SSH，ssh公匙获取方法和github一样，但是授予推送权限选项必须打勾，这样你才有写权限<br>3.​在你的域名管理平台中（比如阿里云，腾讯云之类的），域名 -&gt;管理-&gt; 解析域名，增加一条CNAME信息，记录值为 username.coding.me（username为你的coding用户名）主机记录：www；<br>4.等到第三步的解析生效（最长十分钟），在coding中，项目 -&gt; 代码 -&gt; Pages服务中，一键部署Pages。在Pages的设置里，自定义自己的域名并绑定（域名前加www.前缀）<br>5.在本地博客路径下，修改_config.yml下的deploy，改为：<br><img src="/2019/10/03/hexo搭建博客优化-coding/2.jpg" alt="2"><br>格式一定要正确，不然会报错！<br>6.在本地博客路径下，执行命令：  </p>
+    <h2 id="为什么优化？"><a href="#为什么优化？" class="headerlink" title="为什么优化？"></a>为什么优化？</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;hexo+github访问速度超慢！龟速暴击。。。原因是托管网站的github是外网，访问外网慢是必然的。有很多人博客采用hexo+github+coding方式，至于coding是什么？大家可以理解为中国版的github，如果把代码既托管到coding上，又托管到github上，让大陆的用户访问的是由coding托管的网站，歪果仁访问的是由github托管的网站，这样访问速度就能上去了。<br>搭建完成后（在上一篇）<br>1.需要创建一个coding账号，然后添加一个项目，项目名为你的coding账号名，例如我的账号名是ivan-zcy，所以我新建的项目为ivan-zcy，注意要在初始化项目那一项打勾<br><img src="/2019/10/03/hexo搭建博客优化-coding/1.jpg" alt="1"><br>2.进入项目 -&gt; 设置 -&gt; 部署公匙 -&gt;新建部署公匙，给项目添加公匙SSH，ssh公匙获取方法和github一样，但是授予推送权限选项必须打勾，这样你才有写权限<br>3.​在你的域名管理平台中（比如阿里云，腾讯云之类的），域名 -&gt;管理-&gt; 解析域名，增加一条CNAME信息，记录值为 username.coding.me（username为你的coding用户名）主机记录：www；<br>4.等到第三步的解析生效（最长十分钟），在coding中，项目 -&gt; 代码 -&gt; Pages服务中，一键部署Pages。在Pages的设置里，自定义自己的域名并绑定（域名前加www.前缀）<br>5.在本地博客路径下，修改_config.yml下的deploy，改为：<br><img src="/2019/10/03/hexo搭建博客优化-coding/2.jpg" alt="2"><br>格式一定要正确，不然会报错！<br>6.在本地博客路径下，执行命令：  </p>
 <table><tr><td bgcolor="#808080">$ hexo clean</td></tr></table>   
 <table><tr><td bgcolor="#808080">$ hexo g</td></tr></table>   
 <table><tr><td bgcolor="#808080">$ hexo s</td></tr></table>  
@@ -576,11 +576,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ALL IS WELL</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color2">ALL IS WELL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,15 +592,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">分布式数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">博客优化</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">分布式数据库</a>
               </li>
              
               <li class="article-tag-list-item">
