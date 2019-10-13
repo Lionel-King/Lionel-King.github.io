@@ -350,7 +350,9 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    
+    <p>1.配置hosts文件，master节点能快速查到并访问各个节点，首先要查看当前虚拟节点的IP地址是多少，命令ifconfig，配置hosts文件<br><img src="/2019/10/10/hadoop完全分布式搭建/1.jpg" alt="进程"><br>2.建立hadoop账号，sudo groupadd hadoop；sudo passwd zhm<br>3.配置SSH免密钥登录  ssh Localhost<br>4.下载并解压hadoop安装包，配置namenode，修改site文件（见上）<br>5.配置hadoop-env.sh文件 （JAVA_HOME，HADOOP_CLASSPATH）<br>6.配置masters和slaves，在masters文件中填入master，在slaves文件中填入node1，node2，这样节点就安装在hadoop中了。<br>7.向各节点复制hadoop，scp -r ./hadoop node1;scp -r ./hadoop node2;<br>8.格式化NameNode；hadoop  namenode -format<br>9.启动hadoop，jps验证是否成功启动<br><img src="/2019/10/10/hadoop完全分布式搭建/2.jpg" alt="进程">  </p>
+<h3 id="部署zookeeper-完全分布式"><a href="#部署zookeeper-完全分布式" class="headerlink" title="部署zookeeper 完全分布式"></a>部署zookeeper 完全分布式</h3><p>1.Zookeeper集群安装<br>解压zookeeper安装包<br>$ tar -xvf zookeeper-3.4.5-cdh5.7.1.tar.gz -C app/cdh/<br>配置用户环境变量$vim.bash_profile<br>export ZOOKEEPER_HOME=/home/hadoop/app/cdh/zookeeper-3.4.5-cdh5.7.1    export  PATH=$PATH:$ZOOKEEPER_HOME/bin<br>使修改的环境变量生效<br>$ source.bash_profile<br>修改zookeeper的配置文件<br>$ cd app/cdh/zookeeper-3.4.5-cdh5.7.1/conf/<br>$ cp zoo_sample.cfg zoo.cfg  $ vim zoo.cfg<br>2.修改hadoop-env.sh文件，配置core-site.xml,hdfs-site.xml,mapred-site.xml,yarn-site.xml文件<br>配置slaves文件，$ vimslaves hadoop-slave1 hadoop-slave2 hadoop-slave3<br>创建配置文件中涉及的目录   $ cd/home/hadoop/app/cdh/hadoop-2.6.0-cdh5.7.1/  $ mkdir-p data/tmp<br>将hadoop工作目录同步到集群其它节点<br>$ scp-r/home/hadoop/app/cdh/hadoop-2.6.0-cdh5.7.1/hadoop-master2:/home/hadoop/app/cdh/<br>在集群各节点上修改用户环境变量<br>$ vim .bash_profile<br>export HADOOP_HOME=/home/hadoop/app/cdh/hadoop-2.6.0-cdh5.7.1<br>使修改的环境变量生效  $ source.bash_profile<br>3.hadoop集群初始化<br>启动zookeeper集群（分别在slave1、slave2和slave3上执行） $ zkServer.shstart<br>格式化ZKFC（在master1上执行）   $ hdfszkfc -formatZK<br>格式化HDFS（在master1上执行）  $ hdfsnamenode -format<br>4.hadoop集群启动<br>启动zookeeper集群（分别在slave1、slave2和slave3执行）    $ zkServer.shstart<br>启动HDFS（在master1执行）    $ start-dfs.sh<br><img src="/2019/10/10/hadoop完全分布式搭建/3.jpg" alt="进程"><br>启动YARN（在master2执行）  $ start-yarn.sh<br><img src="/2019/10/10/hadoop完全分布式搭建/4.jpg" alt="进程"><br>启动YARN的另一个ResourceManager（在master1执行，用于容灾）<br>$ yarn-daemon.sh start resourcemanager<br>启动YARN的安全代理（在master2执行）<br>$ yarn-daemon.sh start proxyserver<br><img src="/2019/10/10/hadoop完全分布式搭建/5.jpg" alt="进程">  </p>
+
     
 
     
@@ -1325,11 +1327,11 @@ hexo会在public文件夹下生成相关的html文件，这些文件都是要提
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ALL IS WELL</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color2">ALL IS WELL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1341,19 +1343,19 @@ hexo会在public文件夹下生成相关的html文件，这些文件都是要提
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">coding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">分布式数据库</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">电影</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
             
             <div class="clearfix"></div>
