@@ -18,10 +18,22 @@
 <meta property="og:site_name" content="MFENG">
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Pandas 是基于 NumPy 的一种工具，提供了大量数据探索的方法。Pandas 可以使用类似 SQL 的方式对 .csv、.tsv、.xlsx 等格式的数据进行处理分析。Pandas主要使用的数据结构是Series和DataFrame类。-Series 是一种类似于一维数组的对象，它由一组数据（各种 NumPy 数据类型）及一组与之相关的数据标">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-19T03:13:22.249Z">
+<meta property="og:image" content="https://www.jshlionel.com/2019/10/19/pandas/1.png">
+<meta property="og:image" content="https://www.jshlionel.com/2019/10/19/pandas/2.png">
+<meta property="og:image" content="https://www.jshlionel.com/2019/10/19/pandas/3.png">
+<meta property="og:image" content="https://www.jshlionel.com/2019/10/19/pandas/4.png">
+<meta property="og:image" content="https://www.jshlionel.com/2019/10/19/pandas/5.png">
+<meta property="og:image" content="https://www.jshlionel.com/2019/10/19/pandas/6.png">
+<meta property="og:image" content="https://www.jshlionel.com/2019/10/19/pandas/7.png">
+<meta property="og:image" content="https://www.jshlionel.com/2019/10/19/pandas/8.png">
+<meta property="og:image" content="https://www.jshlionel.com/2019/10/19/pandas/9.png">
+<meta property="og:image" content="https://www.jshlionel.com/2019/10/19/pandas/10.png">
+<meta property="og:image" content="https://www.jshlionel.com/2019/10/19/pandas/11.png">
+<meta property="og:updated_time" content="2019-10-19T03:36:01.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pandas数据探索">
 <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Pandas 是基于 NumPy 的一种工具，提供了大量数据探索的方法。Pandas 可以使用类似 SQL 的方式对 .csv、.tsv、.xlsx 等格式的数据进行处理分析。Pandas主要使用的数据结构是Series和DataFrame类。-Series 是一种类似于一维数组的对象，它由一组数据（各种 NumPy 数据类型）及一组与之相关的数据标">
+<meta name="twitter:image" content="https://www.jshlionel.com/2019/10/19/pandas/1.png">
   
     <link rel="alternative" href="/atom.xml" title="MFENG" type="application/atom+xml">
   
@@ -253,7 +265,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">4分</span>
+      <span class="post-count">3分</span>
     </span>
   </span>
 </div>
@@ -268,46 +280,51 @@
 <h3 id="分析电信运营商的客户离网率数据集"><a href="#分析电信运营商的客户离网率数据集" class="headerlink" title="分析电信运营商的客户离网率数据集"></a>分析电信运营商的客户离网率数据集</h3><p>载入必要的库，即Numpy和Pandas  </p>
 <table><tr><td bgcolor="#808080">import numpy as np<br> import pandas as pd<br> import warnings<br> warnings.filterwarnings('ignore')</td></tr></table>  
 通过read_csv()方法读取数据，然后head()方法查看前5行数据。  
-<table><tr><td bgcolor="#808080">df = pd.read_csv(     'https://labfile.oss.aliyuncs.com/courses/1283/telecom_churn.csv') <br>df.head()</td></tr></table>  
-![1](pandas/1.png)  
-上图中的每行对应一位客户，每列对应客户的一个特征(元组和属性)  
-查看该数据库的维度、特征名称和特征类型：  
+<table><tr><td bgcolor="#808080">df = pd.read_csv(     'https://labfile.oss.aliyuncs.com/courses/1283/telecom_churn.csv') <br>df.head()</td></tr></table> 
+
+<p><img src="/2019/10/19/pandas/1.png" alt="1">  </p>
+<p>上图中的每行对应一位客户，每列对应客户的一个特征(元组和属性)<br>查看该数据库的维度、特征名称和特征类型：  </p>
 <table><tr><td bgcolor="#808080">df.shape</td></tr></table>  
 结果表明列表包含3333行和20列  
 使用 info() 方法输出 DataFrame 的一些总体信息  
 <table><tr><td bgcolor="#808080">df.info()</td></tr></table>  
-![1](pandas/2.png)  
-bool、int64、float64 和 object 是该数据库特征的数据类型。这一方法同时也会显示是否有缺失值，上述结果表明在该数据集中不存在缺失值，因为每列都包含 3333 个观测，和我们之前使用 shape 方法得到的数字是一致的  
+
+<p><img src="/2019/10/19/pandas/2.png" alt="2">  </p>
+<p>bool、int64、float64 和 object 是该数据库特征的数据类型。这一方法同时也会显示是否有缺失值，上述结果表明在该数据集中不存在缺失值，因为每列都包含 3333 个观测，和我们之前使用 shape 方法得到的数字是一致的  </p>
 <table><tr><td bgcolor="#808080">df['Churn'] = df['Churn'].astype('int64')</td></tr></table>  
 astype() 方法可以更改列的类型，下列公式将 Churn 离网率 特征修改为 int64 类型  
  <table><tr><td bgcolor="#808080">df.describe()</td></tr></table>  
 `describe()` 方法可以显示数值特征（`int64` 和 `float64`）的基本统计学特性，如未缺失值的数值、均值、标准差、范围、四分位数等  
-![1](pandas/3.png)  
-通过 include 参数显式指定包含的数据类型，可以查看非数值特征的统计数据  
-<table><tr><td bgcolor="#808080">df.describe(include=['object', 'bool'])</td></tr></table>  
-![1](pandas/4.png)  
-value_counts() 方法可以查看类别（类型为 object ）和布尔值（类型为 bool ）特征。让我们看下 Churn 离网率 的分布。   
+
+<p><img src="/2019/10/19/pandas/3.png" alt="3">  </p>
+<p>通过 include 参数显式指定包含的数据类型，可以查看非数值特征的统计数据  </p>
+<table><tr><td bgcolor="#808080">df.describe(include=['object', 'bool'])</td></tr></table>
+
+<p><img src="/2019/10/19/pandas/4.png" alt="4">  </p>
+<p>value_counts() 方法可以查看类别（类型为 object ）和布尔值（类型为 bool ）特征。让我们看下 Churn 离网率 的分布。   </p>
 <table><tr><td bgcolor="#808080">df['Churn'].value_counts()</td></tr></table>  
-![1](pandas/5.png)  
-上述结果表明，在 3333 位客户中， 2850 位是忠实客户，他们的 Churn 值为 0。调用 value_counts() 函数时，加上 normalize=True 参数可以显示比例  
+
+<p><img src="/2019/10/19/pandas/5.png" alt="5">  </p>
+<p>上述结果表明，在 3333 位客户中， 2850 位是忠实客户，他们的 Churn 值为 0。调用 value_counts() 函数时，加上 normalize=True 参数可以显示比例  </p>
 <table><tr><td bgcolor="#808080">df['Churn'].value_counts(normalize=True)</td></tr></table>  
 ### 排序  
 DataFrame 可以根据某个变量的值（也就是列）排序。比如，根据每日消费额排序（设置 ascending=False 倒序排列）  
 <table><tr><td bgcolor="#808080">df.sort_values(by='Total day charge',ascending=False).head()</td></tr></table>  
-![1](pandas/6.png)  
-先按 Churn 离网率 升序排列，再按 Total day charge 每日总话费 降序排列，优先级 Churn > Tatal day charge  
+
+<p><img src="/2019/10/19/pandas/6.png" alt="6">  </p>
+<p>先按 Churn 离网率 升序排列，再按 Total day charge 每日总话费 降序排列，优先级 Churn &gt; Tatal day charge  </p>
 <table><tr><td bgcolor="#808080">df.sort_values(by=['Churn', 'Total day charge'],<br>
                ascending=[True, False]).head()</td></tr></table>  
-![1](pandas/7.png)  
-### 索引和获取数据  
-DataFrame 可以以不同的方式进行索引  
-使用 DataFrame['Name'] 可以得到一个单独的列。比如，离网率有多高？  
+
+<p><img src="/2019/10/19/pandas/7.png" alt="7"> </p>
+<h3 id="索引和获取数据"><a href="#索引和获取数据" class="headerlink" title="索引和获取数据"></a>索引和获取数据</h3><p>DataFrame 可以以不同的方式进行索引<br>使用 DataFrame[‘Name’] 可以得到一个单独的列。比如，离网率有多高？  </p>
 <table><tr><td bgcolor="#808080">df['Churn'].mean()</td></tr></table>  
 布尔值索引同样很方便，语法是 df[P(df['Name'])]，P 是在检查 Name 列每个元素时所使用的逻辑条件。这一索引的输出是 DataFrame 的 Name 列中满足 P 条件的行。  
 让我们使用布尔值索引来回答这样以下问题：离网用户的数值变量的均值是多少？  
-<table><tr><td bgcolor="#808080">df[df['Churn'] == 1].mean()</td></tr></table>  
-![1](pandas/8.png)  
-离网用户在白天打电话的总时长的均值是多少
+<table><tr><td bgcolor="#808080">df[df['Churn'] == 1].mean()</td></tr></table>
+
+<p><img src="/2019/10/19/pandas/8.png" alt="8">  </p>
+<p>离网用户在白天打电话的总时长的均值是多少</p>
 <table><tr><td bgcolor="#808080">df[df['Churn'] == 1]['Total day minutes'].mean()</td></tr></table>  
 未使用国际套餐（International plan == NO）的忠实用户（Churn == 0）所打的最长的国际长途是多久  
 <table><tr><td bgcolor="#808080">df[(df['Churn'] == 0) & (df['International plan'] == 'No')
@@ -315,15 +332,16 @@ DataFrame 可以以不同的方式进行索引
 DataFrame 可以通过列名、行名、行号进行索引。loc 方法为通过名称索引，iloc 方法为通过数字索引  
 通过 loc 方法输出 0 至 5 行、State 州 至 Area code 区号 的数据。  
 <table><tr><td bgcolor="#808080">df.loc[0:5, 'State':'Area code']</td></tr></table>  
-![1](pandas/9.png)  
-通过 ilo 方法输出前 5 行的前 3 列数据（和典型的 Python 切片一样，不含最大值）  
+
+<p><img src="/2019/10/19/pandas/9.png" alt="9">  </p>
+<p>通过 ilo 方法输出前 5 行的前 3 列数据（和典型的 Python 切片一样，不含最大值）  </p>
 <table><tr><td bgcolor="#808080">df.iloc[0:5, 0:3]</td></tr></table>  
-![1](pandas/10.png)  
-df[:1] 和 df[-1:] 可以得到 DataFrame 的首行和末行  
-<table><tr><td bgcolor="#808080">df[-1:]</td></tr></table>  
-![1](pandas/11.png)
 
+<p><img src="/2019/10/19/pandas/10.png" alt="10">  </p>
+<p>df[:1] 和 df[-1:] 可以得到 DataFrame 的首行和末行  </p>
+<table><tr><td bgcolor="#808080">df[-1:]</td></tr></table>
 
+<p><img src="/2019/10/19/pandas/11.png" alt="11"></p>
 
     
 
@@ -615,10 +633,6 @@ df[:1] 和 df[-1:] 可以得到 DataFrame 的首行和末行
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -627,11 +641,19 @@ df[:1] 和 df[-1:] 可以得到 DataFrame 的首行和末行
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">ALL IS WELL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hdfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,11 +665,11 @@ df[:1] 和 df[-1:] 可以得到 DataFrame 的首行和末行
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ALL IS WELL</a>
+                <a href="javascript:void(0)" class="js-tag color2">分布式数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">分布式数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">电影</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,10 +682,6 @@ df[:1] 和 df[-1:] 可以得到 DataFrame 的首行和末行
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">待更新</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">电影</a>
               </li>
             
             <div class="clearfix"></div>
