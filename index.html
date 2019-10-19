@@ -327,6 +327,159 @@
 
 
   
+    <article id="post-pandas" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/10/19/pandas/" target="_blank">pandas数据探索</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/10/19/pandas/" class="archive-article-date">
+        <time datetime="2019-10-19T02:26:03.307Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-19</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;Pandas 是基于 NumPy 的一种工具，提供了大量数据探索的方法。Pandas 可以使用类似 SQL 的方式对 .csv、.tsv、.xlsx 等格式的数据进行处理分析。<br>Pandas主要使用的数据结构是<strong>Series</strong>和<strong>DataFrame</strong>类。<br>-<strong>Series</strong> 是一种类似于一维数组的对象，它由一组数据（各种 NumPy 数据类型）及一组与之相关的数据标签（即索引）组成。<br>-<strong>DataFrame</strong> 是一个二维数据结构，即一张表格，其中每列数据的类型相同。你可以把它看成由 Series 实例构成的字典。  </p>
+<h3 id="分析电信运营商的客户离网率数据集"><a href="#分析电信运营商的客户离网率数据集" class="headerlink" title="分析电信运营商的客户离网率数据集"></a>分析电信运营商的客户离网率数据集</h3><p>载入必要的库，即Numpy和Pandas  </p>
+<table><tr><td bgcolor="#808080">import numpy as np<br> import pandas as pd<br> import warnings<br> warnings.filterwarnings('ignore')</td></tr></table>  
+通过read_csv()方法读取数据，然后head()方法查看前5行数据。  
+<table><tr><td bgcolor="#808080">df = pd.read_csv(     'https://labfile.oss.aliyuncs.com/courses/1283/telecom_churn.csv') <br>df.head()</td></tr></table>  
+![1](pandas/1.png)  
+上图中的每行对应一位客户，每列对应客户的一个特征(元组和属性)  
+查看该数据库的维度、特征名称和特征类型：  
+<table><tr><td bgcolor="#808080">df.shape</td></tr></table>  
+结果表明列表包含3333行和20列  
+使用 info() 方法输出 DataFrame 的一些总体信息  
+<table><tr><td bgcolor="#808080">df.info()</td></tr></table>  
+![1](pandas/2.png)  
+bool、int64、float64 和 object 是该数据库特征的数据类型。这一方法同时也会显示是否有缺失值，上述结果表明在该数据集中不存在缺失值，因为每列都包含 3333 个观测，和我们之前使用 shape 方法得到的数字是一致的  
+<table><tr><td bgcolor="#808080">df['Churn'] = df['Churn'].astype('int64')</td></tr></table>  
+astype() 方法可以更改列的类型，下列公式将 Churn 离网率 特征修改为 int64 类型  
+ <table><tr><td bgcolor="#808080">df.describe()</td></tr></table>  
+`describe()` 方法可以显示数值特征（`int64` 和 `float64`）的基本统计学特性，如未缺失值的数值、均值、标准差、范围、四分位数等  
+![1](pandas/3.png)  
+通过 include 参数显式指定包含的数据类型，可以查看非数值特征的统计数据  
+<table><tr><td bgcolor="#808080">df.describe(include=['object', 'bool'])</td></tr></table>  
+![1](pandas/4.png)  
+value_counts() 方法可以查看类别（类型为 object ）和布尔值（类型为 bool ）特征。让我们看下 Churn 离网率 的分布。   
+<table><tr><td bgcolor="#808080">df['Churn'].value_counts()</td></tr></table>  
+![1](pandas/5.png)  
+上述结果表明，在 3333 位客户中， 2850 位是忠实客户，他们的 Churn 值为 0。调用 value_counts() 函数时，加上 normalize=True 参数可以显示比例  
+<table><tr><td bgcolor="#808080">df['Churn'].value_counts(normalize=True)</td></tr></table>  
+### 排序  
+DataFrame 可以根据某个变量的值（也就是列）排序。比如，根据每日消费额排序（设置 ascending=False 倒序排列）  
+<table><tr><td bgcolor="#808080">df.sort_values(by='Total day charge',ascending=False).head()</td></tr></table>  
+![1](pandas/6.png)  
+先按 Churn 离网率 升序排列，再按 Total day charge 每日总话费 降序排列，优先级 Churn > Tatal day charge  
+<table><tr><td bgcolor="#808080">df.sort_values(by=['Churn', 'Total day charge'],<br>
+               ascending=[True, False]).head()</td></tr></table>  
+![1](pandas/7.png)  
+### 索引和获取数据  
+DataFrame 可以以不同的方式进行索引  
+使用 DataFrame['Name'] 可以得到一个单独的列。比如，离网率有多高？  
+<table><tr><td bgcolor="#808080">df['Churn'].mean()</td></tr></table>  
+布尔值索引同样很方便，语法是 df[P(df['Name'])]，P 是在检查 Name 列每个元素时所使用的逻辑条件。这一索引的输出是 DataFrame 的 Name 列中满足 P 条件的行。  
+让我们使用布尔值索引来回答这样以下问题：离网用户的数值变量的均值是多少？  
+<table><tr><td bgcolor="#808080">df[df['Churn'] == 1].mean()</td></tr></table>  
+![1](pandas/8.png)  
+离网用户在白天打电话的总时长的均值是多少
+<table><tr><td bgcolor="#808080">df[df['Churn'] == 1]['Total day minutes'].mean()</td></tr></table>  
+未使用国际套餐（International plan == NO）的忠实用户（Churn == 0）所打的最长的国际长途是多久  
+<table><tr><td bgcolor="#808080">df[(df['Churn'] == 0) & (df['International plan'] == 'No')
+   ]['Total intl minutes'].max()</td></tr></table>  
+DataFrame 可以通过列名、行名、行号进行索引。loc 方法为通过名称索引，iloc 方法为通过数字索引  
+通过 loc 方法输出 0 至 5 行、State 州 至 Area code 区号 的数据。  
+<table><tr><td bgcolor="#808080">df.loc[0:5, 'State':'Area code']</td></tr></table>  
+![1](pandas/9.png)  
+通过 ilo 方法输出前 5 行的前 3 列数据（和典型的 Python 切片一样，不含最大值）  
+<table><tr><td bgcolor="#808080">df.iloc[0:5, 0:3]</td></tr></table>  
+![1](pandas/10.png)  
+df[:1] 和 df[-1:] 可以得到 DataFrame 的首行和末行  
+<table><tr><td bgcolor="#808080">df[-1:]</td></tr></table>  
+![1](pandas/11.png)
+
+
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pandas</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">待更新</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/10/19/pandas/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hadoop完全分布式搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1100,115 +1253,6 @@ hexo会在public文件夹下生成相关的html文件，这些文件都是要提
 
 
   
-    <article id="post-Markdown语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/09/24/Markdown语法/" target="_blank">Markdown基本语法</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/09/24/Markdown语法/" class="archive-article-date">
-        <time datetime="2019-09-24T04:45:22.852Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h3 id="1-特殊字符"><a href="#1-特殊字符" class="headerlink" title="1.特殊字符"></a>1.特殊字符</h3><p>Markdown对特殊字符处理不是很友好,很容易出现很奇怪的异常,其实就是因为文章中包含了特殊字符无法编译通过导致Hexo无法渲染</p>
-<p><img src="/2019/09/24/Markdown语法/1.jpg" alt="特殊字符"></p>
-<h3 id="2-标题"><a href="#2-标题" class="headerlink" title="2.标题"></a>2.标题</h3><p><img src="/2019/09/24/Markdown语法/2.jpg" alt="各级标题"></p>
-<h3 id="3-粗体斜体"><a href="#3-粗体斜体" class="headerlink" title="3.粗体斜体"></a>3.粗体斜体</h3><p><img src="/2019/09/24/Markdown语法/3.jpg" alt="粗体斜体"></p>
-<h3 id="4-链接"><a href="#4-链接" class="headerlink" title="4.链接"></a>4.链接</h3><p><img src="/2019/09/24/Markdown语法/4.jpg" alt="链接"></p>
-<h3 id="5-列表"><a href="#5-列表" class="headerlink" title="5.列表"></a>5.列表</h3><p><img src="/2019/09/24/Markdown语法/5.jpg" alt="列表"></p>
-<h3 id="6-引用"><a href="#6-引用" class="headerlink" title="6.引用"></a>6.引用</h3><p><img src="/2019/09/24/Markdown语法/6.jpg" alt="引用"></p>
-<h3 id="7-图片"><a href="#7-图片" class="headerlink" title="7.图片"></a>7.图片</h3><p><img src="/2019/09/24/Markdown语法/7.jpg" alt="图片"></p>
-<h3 id="8-换行"><a href="#8-换行" class="headerlink" title="8.换行"></a>8.换行</h3><p>如果另起一行，只需在当前行结尾加 2 个空格</p>
-<h3 id="9-分隔符"><a href="#9-分隔符" class="headerlink" title="9.分隔符"></a>9.分隔符</h3><p>如果你有写分割线的习惯，可以新起一行输入三个减号-。当前后都有段落时，请空出一行</p>
-<h3 id="10-小型文本"><a href="#10-小型文本" class="headerlink" title="10.小型文本"></a>10.小型文本</h3><p><img src="/2019/09/24/Markdown语法/8.jpg" alt="小型文本"></p>
-<h3 id="11-注释"><a href="#11-注释" class="headerlink" title="11.注释"></a>11.注释</h3><p><img src="/2019/09/24/Markdown语法/9.jpg" alt="注释"></p>
-<h3 id="12-表格"><a href="#12-表格" class="headerlink" title="12.表格"></a>12.表格</h3><p><img src="/2019/09/24/Markdown语法/10.jpg" alt="表格"></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Markdown//" class="article-tag-list-link color4">Markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/09/24/Markdown语法/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1325,6 +1369,10 @@ hexo会在public文件夹下生成相关的html文件，这些文件都是要提
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -1333,19 +1381,11 @@ hexo会在public文件夹下生成相关的html文件，这些文件都是要提
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ALL IS WELL</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hdfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1357,7 +1397,23 @@ hexo会在public文件夹下生成相关的html文件，这些文件都是要提
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ALL IS WELL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">分布式数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pandas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">待更新</a>
               </li>
              
               <li class="article-tag-list-item">

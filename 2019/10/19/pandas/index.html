@@ -6,17 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.jshlionel.com">
-  <title>Tag: Hadoop | MFENG</title>
+  <title>pandas数据探索 | MFENG</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="MFENG">
-<meta property="og:url" content="https://www.jshlionel.com/tags/Hadoop/index.html">
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Pandas 是基于 NumPy 的一种工具，提供了大量数据探索的方法。Pandas 可以使用类似 SQL 的方式对 .csv、.tsv、.xlsx 等格式的数据进行处理分析。Pandas主要使用的数据结构是Series和DataFrame类。-Series 是一种类似于一维数组的对象，它由一组数据（各种 NumPy 数据类型）及一组与之相关的数据标">
+<meta name="keywords" content="pandas,机器学习,待更新">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pandas数据探索">
+<meta property="og:url" content="https://www.jshlionel.com/2019/10/19/pandas/index.html">
 <meta property="og:site_name" content="MFENG">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Pandas 是基于 NumPy 的一种工具，提供了大量数据探索的方法。Pandas 可以使用类似 SQL 的方式对 .csv、.tsv、.xlsx 等格式的数据进行处理分析。Pandas主要使用的数据结构是Series和DataFrame类。-Series 是一种类似于一维数组的对象，它由一组数据（各种 NumPy 数据类型）及一组与之相关的数据标">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-19T03:13:22.249Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MFENG">
+<meta name="twitter:title" content="pandas数据探索">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Pandas 是基于 NumPy 的一种工具，提供了大量数据探索的方法。Pandas 可以使用类似 SQL 的方式对 .csv、.tsv、.xlsx 等格式的数据进行处理分析。Pandas主要使用的数据结构是Series和DataFrame类。-Series 是一种类似于一维数组的对象，它由一组数据（各种 NumPy 数据类型）及一组与之相关的数据标">
   
     <link rel="alternative" href="/atom.xml" title="MFENG" type="application/atom+xml">
   
@@ -206,80 +211,299 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-pandas" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/09/26/Hadoop集群/" class="archive-article-date">
-        <time datetime="2019-09-26T03:50:45.895Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/09/26/Hadoop集群/" target="_blank">Hadoop伪分布式集群搭建</a>
   
+    <h1 class="article-title" itemprop="name">
+      pandas数据探索
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2019/10/19/pandas/" class="archive-article-date">
+        <time datetime="2019-10-19T02:26:03.307Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-19</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">4分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;Pandas 是基于 NumPy 的一种工具，提供了大量数据探索的方法。Pandas 可以使用类似 SQL 的方式对 .csv、.tsv、.xlsx 等格式的数据进行处理分析。<br>Pandas主要使用的数据结构是<strong>Series</strong>和<strong>DataFrame</strong>类。<br>-<strong>Series</strong> 是一种类似于一维数组的对象，它由一组数据（各种 NumPy 数据类型）及一组与之相关的数据标签（即索引）组成。<br>-<strong>DataFrame</strong> 是一个二维数据结构，即一张表格，其中每列数据的类型相同。你可以把它看成由 Series 实例构成的字典。  </p>
+<h3 id="分析电信运营商的客户离网率数据集"><a href="#分析电信运营商的客户离网率数据集" class="headerlink" title="分析电信运营商的客户离网率数据集"></a>分析电信运营商的客户离网率数据集</h3><p>载入必要的库，即Numpy和Pandas  </p>
+<table><tr><td bgcolor="#808080">import numpy as np<br> import pandas as pd<br> import warnings<br> warnings.filterwarnings('ignore')</td></tr></table>  
+通过read_csv()方法读取数据，然后head()方法查看前5行数据。  
+<table><tr><td bgcolor="#808080">df = pd.read_csv(     'https://labfile.oss.aliyuncs.com/courses/1283/telecom_churn.csv') <br>df.head()</td></tr></table>  
+![1](pandas/1.png)  
+上图中的每行对应一位客户，每列对应客户的一个特征(元组和属性)  
+查看该数据库的维度、特征名称和特征类型：  
+<table><tr><td bgcolor="#808080">df.shape</td></tr></table>  
+结果表明列表包含3333行和20列  
+使用 info() 方法输出 DataFrame 的一些总体信息  
+<table><tr><td bgcolor="#808080">df.info()</td></tr></table>  
+![1](pandas/2.png)  
+bool、int64、float64 和 object 是该数据库特征的数据类型。这一方法同时也会显示是否有缺失值，上述结果表明在该数据集中不存在缺失值，因为每列都包含 3333 个观测，和我们之前使用 shape 方法得到的数字是一致的  
+<table><tr><td bgcolor="#808080">df['Churn'] = df['Churn'].astype('int64')</td></tr></table>  
+astype() 方法可以更改列的类型，下列公式将 Churn 离网率 特征修改为 int64 类型  
+ <table><tr><td bgcolor="#808080">df.describe()</td></tr></table>  
+`describe()` 方法可以显示数值特征（`int64` 和 `float64`）的基本统计学特性，如未缺失值的数值、均值、标准差、范围、四分位数等  
+![1](pandas/3.png)  
+通过 include 参数显式指定包含的数据类型，可以查看非数值特征的统计数据  
+<table><tr><td bgcolor="#808080">df.describe(include=['object', 'bool'])</td></tr></table>  
+![1](pandas/4.png)  
+value_counts() 方法可以查看类别（类型为 object ）和布尔值（类型为 bool ）特征。让我们看下 Churn 离网率 的分布。   
+<table><tr><td bgcolor="#808080">df['Churn'].value_counts()</td></tr></table>  
+![1](pandas/5.png)  
+上述结果表明，在 3333 位客户中， 2850 位是忠实客户，他们的 Churn 值为 0。调用 value_counts() 函数时，加上 normalize=True 参数可以显示比例  
+<table><tr><td bgcolor="#808080">df['Churn'].value_counts(normalize=True)</td></tr></table>  
+### 排序  
+DataFrame 可以根据某个变量的值（也就是列）排序。比如，根据每日消费额排序（设置 ascending=False 倒序排列）  
+<table><tr><td bgcolor="#808080">df.sort_values(by='Total day charge',ascending=False).head()</td></tr></table>  
+![1](pandas/6.png)  
+先按 Churn 离网率 升序排列，再按 Total day charge 每日总话费 降序排列，优先级 Churn > Tatal day charge  
+<table><tr><td bgcolor="#808080">df.sort_values(by=['Churn', 'Total day charge'],<br>
+               ascending=[True, False]).head()</td></tr></table>  
+![1](pandas/7.png)  
+### 索引和获取数据  
+DataFrame 可以以不同的方式进行索引  
+使用 DataFrame['Name'] 可以得到一个单独的列。比如，离网率有多高？  
+<table><tr><td bgcolor="#808080">df['Churn'].mean()</td></tr></table>  
+布尔值索引同样很方便，语法是 df[P(df['Name'])]，P 是在检查 Name 列每个元素时所使用的逻辑条件。这一索引的输出是 DataFrame 的 Name 列中满足 P 条件的行。  
+让我们使用布尔值索引来回答这样以下问题：离网用户的数值变量的均值是多少？  
+<table><tr><td bgcolor="#808080">df[df['Churn'] == 1].mean()</td></tr></table>  
+![1](pandas/8.png)  
+离网用户在白天打电话的总时长的均值是多少
+<table><tr><td bgcolor="#808080">df[df['Churn'] == 1]['Total day minutes'].mean()</td></tr></table>  
+未使用国际套餐（International plan == NO）的忠实用户（Churn == 0）所打的最长的国际长途是多久  
+<table><tr><td bgcolor="#808080">df[(df['Churn'] == 0) & (df['International plan'] == 'No')
+   ]['Total intl minutes'].max()</td></tr></table>  
+DataFrame 可以通过列名、行名、行号进行索引。loc 方法为通过名称索引，iloc 方法为通过数字索引  
+通过 loc 方法输出 0 至 5 行、State 州 至 Area code 区号 的数据。  
+<table><tr><td bgcolor="#808080">df.loc[0:5, 'State':'Area code']</td></tr></table>  
+![1](pandas/9.png)  
+通过 ilo 方法输出前 5 行的前 3 列数据（和典型的 Python 切片一样，不含最大值）  
+<table><tr><td bgcolor="#808080">df.iloc[0:5, 0:3]</td></tr></table>  
+![1](pandas/10.png)  
+df[:1] 和 df[-1:] 可以得到 DataFrame 的首行和末行  
+<table><tr><td bgcolor="#808080">df[-1:]</td></tr></table>  
+![1](pandas/11.png)
+
+
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝奶茶<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/pay.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          ALL_IS_WELL
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://www.jshlionel.com/2019/10/19/pandas/" title="pandas数据探索" target="_blank">https://www.jshlionel.com/2019/10/19/pandas/</a>
+        </li>
+        <li>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+        </li>
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Hadoop</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pandas</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">更新中</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/集群//" class="article-tag-list-link color3">集群</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">待更新</a>
         		</li>
       		
 		</ul>
 	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
     
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://www.jshlionel.com/2019/10/19/pandas/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/10/hadoop完全分布式搭建/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hadoop完全分布式搭建</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -320,9 +544,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
