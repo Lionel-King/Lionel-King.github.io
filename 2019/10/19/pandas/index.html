@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://www.jshlionel.com/2019/10/19/pandas/9.png">
 <meta property="og:image" content="https://www.jshlionel.com/2019/10/19/pandas/10.png">
 <meta property="og:image" content="https://www.jshlionel.com/2019/10/19/pandas/11.png">
-<meta property="og:updated_time" content="2019-10-19T03:36:01.879Z">
+<meta property="og:updated_time" content="2019-10-19T04:12:57.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pandas数据探索">
 <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Pandas 是基于 NumPy 的一种工具，提供了大量数据探索的方法。Pandas 可以使用类似 SQL 的方式对 .csv、.tsv、.xlsx 等格式的数据进行处理分析。Pandas主要使用的数据结构是Series和DataFrame类。-Series 是一种类似于一维数组的对象，它由一组数据（各种 NumPy 数据类型）及一组与之相关的数据标">
@@ -280,7 +280,7 @@
 <h3 id="分析电信运营商的客户离网率数据集"><a href="#分析电信运营商的客户离网率数据集" class="headerlink" title="分析电信运营商的客户离网率数据集"></a>分析电信运营商的客户离网率数据集</h3><p>载入必要的库，即Numpy和Pandas  </p>
 <table><tr><td bgcolor="#808080">import numpy as np<br> import pandas as pd<br> import warnings<br> warnings.filterwarnings('ignore')</td></tr></table>  
 通过read_csv()方法读取数据，然后head()方法查看前5行数据。  
-<table><tr><td bgcolor="#808080">df = pd.read_csv(     'https://labfile.oss.aliyuncs.com/courses/1283/telecom_churn.csv') <br>df.head()</td></tr></table> 
+<table><tr><td bgcolor="#808080">df = pd.read_csv(     'https://labfile.oss.aliyuncs.com/courses/1283/telecom_churn.csv') <br>df.head()</td></tr></table>  
 
 <p><img src="/2019/10/19/pandas/1.png" alt="1">  </p>
 <p>上图中的每行对应一位客户，每列对应客户的一个特征(元组和属性)<br>查看该数据库的维度、特征名称和特征类型：  </p>
@@ -294,15 +294,15 @@
 <table><tr><td bgcolor="#808080">df['Churn'] = df['Churn'].astype('int64')</td></tr></table>  
 astype() 方法可以更改列的类型，下列公式将 Churn 离网率 特征修改为 int64 类型  
  <table><tr><td bgcolor="#808080">df.describe()</td></tr></table>  
-`describe()` 方法可以显示数值特征（`int64` 和 `float64`）的基本统计学特性，如未缺失值的数值、均值、标准差、范围、四分位数等  
+`describe()` 方法可以显示数值特征（`int64` 和 `float64`）的基本统计学特性，如未缺失值的数值、均值、标准差、范围、四分位数等
 
 <p><img src="/2019/10/19/pandas/3.png" alt="3">  </p>
 <p>通过 include 参数显式指定包含的数据类型，可以查看非数值特征的统计数据  </p>
-<table><tr><td bgcolor="#808080">df.describe(include=['object', 'bool'])</td></tr></table>
+<table><tr><td bgcolor="#808080">df.describe(include=['object', 'bool'])</td></tr></table>  
 
 <p><img src="/2019/10/19/pandas/4.png" alt="4">  </p>
 <p>value_counts() 方法可以查看类别（类型为 object ）和布尔值（类型为 bool ）特征。让我们看下 Churn 离网率 的分布。   </p>
-<table><tr><td bgcolor="#808080">df['Churn'].value_counts()</td></tr></table>  
+<table><tr><td bgcolor="#808080">df['Churn'].value_counts()</td></tr></table>
 
 <p><img src="/2019/10/19/pandas/5.png" alt="5">  </p>
 <p>上述结果表明，在 3333 位客户中， 2850 位是忠实客户，他们的 Churn 值为 0。调用 value_counts() 函数时，加上 normalize=True 参数可以显示比例  </p>
@@ -339,7 +339,7 @@ DataFrame 可以通过列名、行名、行号进行索引。loc 方法为通过
 
 <p><img src="/2019/10/19/pandas/10.png" alt="10">  </p>
 <p>df[:1] 和 df[-1:] 可以得到 DataFrame 的首行和末行  </p>
-<table><tr><td bgcolor="#808080">df[-1:]</td></tr></table>
+<table><tr><td bgcolor="#808080">df[-1:]</td></tr></table> 
 
 <p><img src="/2019/10/19/pandas/11.png" alt="11"></p>
 
@@ -633,14 +633,6 @@ DataFrame 可以通过列名、行名、行号进行索引。loc 方法为通过
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">更新中</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
@@ -649,7 +641,11 @@ DataFrame 可以通过列名、行名、行号进行索引。loc 方法为通过
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">更新中</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -657,11 +653,7 @@ DataFrame 可以通过列名、行名、行号进行索引。loc 方法为通过
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">coding</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -681,7 +673,11 @@ DataFrame 可以通过列名、行名、行号进行索引。loc 方法为通过
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">电影</a>
+                <a href="javascript:void(0)" class="js-tag color5">博客优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
             
             <div class="clearfix"></div>

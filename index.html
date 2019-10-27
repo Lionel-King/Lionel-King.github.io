@@ -360,7 +360,7 @@
 <h3 id="分析电信运营商的客户离网率数据集"><a href="#分析电信运营商的客户离网率数据集" class="headerlink" title="分析电信运营商的客户离网率数据集"></a>分析电信运营商的客户离网率数据集</h3><p>载入必要的库，即Numpy和Pandas  </p>
 <table><tr><td bgcolor="#808080">import numpy as np<br> import pandas as pd<br> import warnings<br> warnings.filterwarnings('ignore')</td></tr></table>  
 通过read_csv()方法读取数据，然后head()方法查看前5行数据。  
-<table><tr><td bgcolor="#808080">df = pd.read_csv(     'https://labfile.oss.aliyuncs.com/courses/1283/telecom_churn.csv') <br>df.head()</td></tr></table> 
+<table><tr><td bgcolor="#808080">df = pd.read_csv(     'https://labfile.oss.aliyuncs.com/courses/1283/telecom_churn.csv') <br>df.head()</td></tr></table>  
 
 <p><img src="/2019/10/19/pandas/1.png" alt="1">  </p>
 <p>上图中的每行对应一位客户，每列对应客户的一个特征(元组和属性)<br>查看该数据库的维度、特征名称和特征类型：  </p>
@@ -374,15 +374,15 @@
 <table><tr><td bgcolor="#808080">df['Churn'] = df['Churn'].astype('int64')</td></tr></table>  
 astype() 方法可以更改列的类型，下列公式将 Churn 离网率 特征修改为 int64 类型  
  <table><tr><td bgcolor="#808080">df.describe()</td></tr></table>  
-`describe()` 方法可以显示数值特征（`int64` 和 `float64`）的基本统计学特性，如未缺失值的数值、均值、标准差、范围、四分位数等  
+`describe()` 方法可以显示数值特征（`int64` 和 `float64`）的基本统计学特性，如未缺失值的数值、均值、标准差、范围、四分位数等
 
 <p><img src="/2019/10/19/pandas/3.png" alt="3">  </p>
 <p>通过 include 参数显式指定包含的数据类型，可以查看非数值特征的统计数据  </p>
-<table><tr><td bgcolor="#808080">df.describe(include=['object', 'bool'])</td></tr></table>
+<table><tr><td bgcolor="#808080">df.describe(include=['object', 'bool'])</td></tr></table>  
 
 <p><img src="/2019/10/19/pandas/4.png" alt="4">  </p>
 <p>value_counts() 方法可以查看类别（类型为 object ）和布尔值（类型为 bool ）特征。让我们看下 Churn 离网率 的分布。   </p>
-<table><tr><td bgcolor="#808080">df['Churn'].value_counts()</td></tr></table>  
+<table><tr><td bgcolor="#808080">df['Churn'].value_counts()</td></tr></table>
 
 <p><img src="/2019/10/19/pandas/5.png" alt="5">  </p>
 <p>上述结果表明，在 3333 位客户中， 2850 位是忠实客户，他们的 Churn 值为 0。调用 value_counts() 函数时，加上 normalize=True 参数可以显示比例  </p>
@@ -419,7 +419,7 @@ DataFrame 可以通过列名、行名、行号进行索引。loc 方法为通过
 
 <p><img src="/2019/10/19/pandas/10.png" alt="10">  </p>
 <p>df[:1] 和 df[-1:] 可以得到 DataFrame 的首行和末行  </p>
-<table><tr><td bgcolor="#808080">df[-1:]</td></tr></table>
+<table><tr><td bgcolor="#808080">df[-1:]</td></tr></table> 
 
 <p><img src="/2019/10/19/pandas/11.png" alt="11"></p>
 
@@ -957,113 +957,6 @@ hexo会在public文件夹下生成相关的html文件，这些文件都是要提
 
 
   
-    <article id="post-电影美丽人生" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/09/29/电影美丽人生/" target="_blank">《美丽人生》</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/09/29/电影美丽人生/" class="archive-article-date">
-        <time datetime="2019-09-29T12:32:23.368Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-29</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <center><font color="#808000" size="7">美丽人生</font></center><br>
-<div align="center"><img src="/2019/09/29/电影美丽人生/1.jpg"></div><br>
-<center><font color="#6B8E23" size="5">美丽的公主遇到了一个爱说谎话的小丑，幸运的是他是个有趣的灵魂</font></center><br>
-<div align="center"><img src="/2019/09/29/电影美丽人生/2.jpg"></div><br>
-<center><font color="#6B8E23" size="5">他们不顾一切的组建了家庭，有了一个可爱的儿子乔书亚</font></center><br>
-<div align="center"><img src="/2019/09/29/电影美丽人生/3.jpg"></div><br>
-<center><font color="#6B8E23" size="5">他用行动告诉妻子，只要你一个肯定，他就可以足够勇敢</font></center><br>
-<div align="center"><img src="/2019/09/29/电影美丽人生/4.jpg"></div><br>
-<center><font color="#6B8E23" size="5">这不是你的错，你的童年应该在童话里</font></center>
-<center><font color="#6B8E23" size="5">人生，就是一场1000分的游戏，别人会嫉妒你的，所以千万别放弃</font></center>
-
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">电影</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/电影//" class="article-tag-list-link color3">电影</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/09/29/电影美丽人生/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-hdfs两大核心功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1259,6 +1152,115 @@ hexo会在public文件夹下生成相关的html文件，这些文件都是要提
 
 
   
+    <article id="post-Markdown语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/24/Markdown语法/" target="_blank">Markdown基本语法</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/24/Markdown语法/" class="archive-article-date">
+        <time datetime="2019-09-24T04:45:22.852Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="1-特殊字符"><a href="#1-特殊字符" class="headerlink" title="1.特殊字符"></a>1.特殊字符</h3><p>Markdown对特殊字符处理不是很友好,很容易出现很奇怪的异常,其实就是因为文章中包含了特殊字符无法编译通过导致Hexo无法渲染</p>
+<p><img src="/2019/09/24/Markdown语法/1.jpg" alt="特殊字符"></p>
+<h3 id="2-标题"><a href="#2-标题" class="headerlink" title="2.标题"></a>2.标题</h3><p><img src="/2019/09/24/Markdown语法/2.jpg" alt="各级标题"></p>
+<h3 id="3-粗体斜体"><a href="#3-粗体斜体" class="headerlink" title="3.粗体斜体"></a>3.粗体斜体</h3><p><img src="/2019/09/24/Markdown语法/3.jpg" alt="粗体斜体"></p>
+<h3 id="4-链接"><a href="#4-链接" class="headerlink" title="4.链接"></a>4.链接</h3><p><img src="/2019/09/24/Markdown语法/4.jpg" alt="链接"></p>
+<h3 id="5-列表"><a href="#5-列表" class="headerlink" title="5.列表"></a>5.列表</h3><p><img src="/2019/09/24/Markdown语法/5.jpg" alt="列表"></p>
+<h3 id="6-引用"><a href="#6-引用" class="headerlink" title="6.引用"></a>6.引用</h3><p><img src="/2019/09/24/Markdown语法/6.jpg" alt="引用"></p>
+<h3 id="7-图片"><a href="#7-图片" class="headerlink" title="7.图片"></a>7.图片</h3><p><img src="/2019/09/24/Markdown语法/7.jpg" alt="图片"></p>
+<h3 id="8-换行"><a href="#8-换行" class="headerlink" title="8.换行"></a>8.换行</h3><p>如果另起一行，只需在当前行结尾加 2 个空格</p>
+<h3 id="9-分隔符"><a href="#9-分隔符" class="headerlink" title="9.分隔符"></a>9.分隔符</h3><p>如果你有写分割线的习惯，可以新起一行输入三个减号-。当前后都有段落时，请空出一行</p>
+<h3 id="10-小型文本"><a href="#10-小型文本" class="headerlink" title="10.小型文本"></a>10.小型文本</h3><p><img src="/2019/09/24/Markdown语法/8.jpg" alt="小型文本"></p>
+<h3 id="11-注释"><a href="#11-注释" class="headerlink" title="11.注释"></a>11.注释</h3><p><img src="/2019/09/24/Markdown语法/9.jpg" alt="注释"></p>
+<h3 id="12-表格"><a href="#12-表格" class="headerlink" title="12.表格"></a>12.表格</h3><p><img src="/2019/09/24/Markdown语法/10.jpg" alt="表格"></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdown</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Markdown//" class="article-tag-list-link color4">Markdown</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/24/Markdown语法/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1375,14 +1377,6 @@ hexo会在public文件夹下生成相关的html文件，这些文件都是要提
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">更新中</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
@@ -1391,7 +1385,11 @@ hexo会在public文件夹下生成相关的html文件，这些文件都是要提
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">更新中</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1399,11 +1397,7 @@ hexo会在public文件夹下生成相关的html文件，这些文件都是要提
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">coding</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1423,7 +1417,11 @@ hexo会在public文件夹下生成相关的html文件，这些文件都是要提
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">电影</a>
+                <a href="javascript:void(0)" class="js-tag color5">博客优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
             
             <div class="clearfix"></div>
